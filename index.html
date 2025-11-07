@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manish Kumar - Portfolio</title>
+  <meta name="description" content="Manish Kumar's portfolio — Full Stack Developer & Web Designer specializing in MERN Stack, PHP, and AI-enhanced web projects.">
+  <meta name="keywords" content="Manish Kumar, Web Developer, Portfolio, MERN, PHP, Tailwind, Delhi, GTBIT">
+  <meta name="author" content="Manish Kumar">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; animation: fadeIn 0.8s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1f2937; }
+    ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid #3b82f6;
+      white-space: nowrap;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #3b82f6; } }
+
+    .message-box {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: bottom 0.5s ease-in-out;
+      font-weight: 500;
+      z-index: 50;
+    }
+    .message-box.show { bottom: 20px; }
+    .message-box-success { background-color: #10B981; color: #fff; }
+    .message-box-error { background-color: #EF4444; color: #fff; }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #FFF;
+      border-bottom-color: #3b82f6;
+      border-radius: 50%;
+      animation: rotation 1s linear infinite;
+      margin: 2rem auto;
+    }
+    @keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* Modal */
+    .modal-hidden { display: none; }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-container {
+      background-color: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 40rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 antialiased">
+  <!-- Header -->
+  <header class="bg-gray-900/90 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-gray-800">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="text-2xl font-bold text-white hover:text-blue-400">Manish Kumar</a>
+      <button id="mobile-menu-button" class="md:hidden text-3xl text-gray-200">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+      <div class="hidden md:flex space-x-6 items-center">
+        <a href="#home" class="hover:text-blue-400">Home</a>
+        <a href="#about" class="hover:text-blue-400">About</a>
+        <a href="#education" class="hover:text-blue-400">Education</a>
+        <a href="#skills" class="hover:text-blue-400">Skills</a>
+        <a href="#projects" class="hover:text-blue-400">Projects</a>
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">Hire Me</a>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col space-y-4 bg-gray-800/90">
+      <a href="#home" class="hover:text-blue-400">Home</a>
+      <a href="#about" class="hover:text-blue-400">About</a>
+      <a href="#education" class="hover:text-blue-400">Education</a>
+      <a href="#skills" class="hover:text-blue-400">Skills</a>
+      <a href="#projects" class="hover:text-blue-400">Projects</a>
+      <a href="#contact" class="hover:text-blue-400">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="container mx-auto px-6 py-12">
+    <section id="home" class="min-h-[80vh] flex flex-col md:flex-row items-center justify-between py-20">
+      <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">
+          Hi, I'm <span class="gradient-text">Manish Kumar</span>
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-medium text-gray-300 mb-6 typewriter">Full Stack Developer & Web Designer</h2>
+        <p class="text-lg text-gray-400 mb-8 max-w-lg">I build responsive, user-friendly interfaces and explore machine learning to create interactive digital experiences.</p>
+        <div class="flex gap-4 justify-center md:justify-start">
+          <a href="#projects" class="bg-blue-600 hover:bg-blue-700 py-3 px-6 rounded-lg">View My Work</a>
+          <a href="#contact" class="bg-gray-800 hover:bg-gray-700 py-3 px-6 rounded-lg border border-gray-700">Get in Touch</a>
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://placehold.co/400x400/4299E1/FFFFFF?text=Manish+K" loading="lazy"
+             class="rounded-full shadow-2xl w-72 h-72 object-cover border-4 border-blue-500">
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white">About <span class="gradient-text">Me</span></h2>
+      <p class="text-lg text-gray-300 text-center max-w-2xl mx-auto leading-relaxed">
+        I'm Manish Kumar, a B.Tech CSE student at GTBIT, Delhi, with a Diploma in IT from IIT Dwarka. Currently interning at Hind Tech Pvt. Ltd as a Front-End Developer. Passionate about building efficient and creative web solutions.
+      </p>
+      <div class="text-center mt-10">
+        <a href="Manish_Kumar_Resume.pdf" download class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg inline-flex items-center">
+          <ion-icon name="download-outline" class="mr-2 text-xl"></ion-icon> Download Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white">My <span class="gradient-text">Skills</span></h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+        <span class="bg-gray-800 py-3 rounded-lg">HTML</span>
+        <span class="bg-gray-800 py-3 rounded-lg">CSS</span>
+        <span class="bg-gray-800 py-3 rounded-lg">JavaScript</span>
+        <span class="bg-gray-800 py-3 rounded-lg">React.js</span>
+        <span class="bg-gray-800 py-3 rounded-lg">PHP</span>
+        <span class="bg-gray-800 py-3 rounded-lg">MySQL</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white">Get in <span class="gradient-text">Touch</span></h2>
+      <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg">
+        <form action="https://formspree.io/f/YOUR_ID" method="POST" class="space-y-6">
+          <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg">
+          <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg">
+          <textarea name="message" rows="5" placeholder="Your Message" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg"></textarea>
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-lg block mx-auto">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 border-t border-gray-700 py-8 text-center">
+    <div class="flex justify-center gap-6 mb-4">
+      <a href="https://github.com/mani1183" title="GitHub" target="_blank" class="text-gray-400 hover:text-white text-3xl"><ion-icon name="logo-github"></ion-icon></a>
+      <a href="https://linkedin.com/in/sharmanish11" title="LinkedIn" target="_blank" class="text-gray-400 hover:text-white text-3xl"><ion-icon name="logo-linkedin"></ion-icon></a>
+    </div>
+    <p class="text-gray-400">© 2025 Manish Kumar. All rights reserved.</p>
+  </footer>
+
+  <!-- Message Box -->
+  <div id="message-box" class="message-box">
+    <span id="message-text"></span>
+    <button id="close-message-box" class="ml-4 font-bold">X</button>
+  </div>
+</body>
+</html>
