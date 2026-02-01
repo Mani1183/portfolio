@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+:root {
+  --primary: #2c62b7;
+  --accent: #3655e1;
+  --bg-dark: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.7);
+
+  /* Motion system */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --t-fast: 280ms;
+  --t-mid: 420ms;
+  --t-slow: 650ms;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-dark);
+  overflow-x: hidden;
+}
+
+/* ================= Loader ================= */
+
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity var(--t-mid) var(--ease-smooth),
+              visibility var(--t-mid) var(--ease-smooth);
+}
+
+#page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-ring {
+  width: 70px;
+  height: 70px;
+  border: 6px solid rgba(255,255,255,0.15);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= Text ================= */
+
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa, #3644e1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+/* ================= Profile ================= */
+
+#profilepic {
+  box-shadow: 0 0 20px rgba(59,130,246,0.5);
+  transition: transform var(--t-mid) var(--ease-smooth),
+              box-shadow var(--t-mid) var(--ease-smooth),
+              background var(--t-mid) var(--ease-smooth);
+}
+
+#profilepic:hover {
+  background: #3b82f6;
+  box-shadow: 0 0 80px rgba(71,136,241,0.5);
+  transform: translateY(-8px) scale(1.04);
+}
+
+/* ================= Buttons ================= */
+
+.btn-primary {
+  background: #2563eb;
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform var(--t-mid) var(--ease-smooth),
+              box-shadow var(--t-mid) var(--ease-smooth),
+              background var(--t-mid) var(--ease-smooth);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s var(--ease-smooth);
+}
+
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  background: #3b82f6;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.45);
+  transform: translateY(-4px);
+}
+
+/* ================= Social ================= */
+
+.social-bubble {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  transition: transform var(--t-mid) var(--ease-smooth),
+              filter var(--t-mid) var(--ease-smooth),
+              box-shadow var(--t-mid) var(--ease-smooth);
+}
+
+.social-bubble:hover {
+  transform: translateY(-6px) scale(1.12);
+  filter: brightness(1.25);
+  box-shadow: 0 0px 30px rgba(59, 131, 246, 0.927);
+}
+
+/* ================= Typewriter ================= */
+
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid var(--primary);
+  white-space: nowrap;
+  animation: typing 3.5s steps(40,end), blink .75s step-end infinite;
+}
+
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* ================= Filters ================= */
+
+.filter-btn, .toggle-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.6rem;
+  color: #9ca3af;
+  transition: background var(--t-mid) var(--ease-soft),
+              color var(--t-mid) var(--ease-soft);
+}
+
+.filter-btn.active, .toggle-btn.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* ================= Skills ================= */
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31,41,55,0.4);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: transform var(--t-mid) var(--ease-smooth),
+              box-shadow var(--t-mid) var(--ease-smooth),
+              border-color var(--t-mid) var(--ease-smooth);
+}
+
+.skill-item:hover .icon-circle {
+  transform: translateY(-10px) scale(1.06);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(59,130,246,0.5);
+}
+
+.icon-circle ion-icon { font-size: 2.8rem; }
+.icon-circle img { width: 45px; height: 45px; }
+
+/* ================= Cards ================= */
+
+.card-bg, .timeline-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  transition: transform var(--t-mid) var(--ease-smooth),
+              box-shadow var(--t-mid) var(--ease-smooth),
+              border-color var(--t-mid) var(--ease-smooth);
+}
+
+.card-bg:hover,
+.timeline-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 30px 70px -20px rgba(139,92,246,0.35);
+}
+
+/* ================= Timeline ================= */
+
+.timeline-container { position: relative; padding: 2rem 0; }
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #374151;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2rem;
+}
+
+.timeline-item.left { left: 0; text-align: right; }
+.timeline-item.right { left: 50%; text-align: left; }
+
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -20px;
+  right: auto;
+}
+
+@media (max-width: 768px) {
+  .timeline-line { left: 20px; }
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    text-align: left !important;
+    padding-left: 50px;
+  }
+  .timeline-dot { left: 0 !important; }
+}
+
+/* ================= Reveal ================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity var(--t-slow) var(--ease-smooth),
+              transform var(--t-slow) var(--ease-smooth);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= Inputs ================= */
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 0.8rem;
+  color: white;
+  transition: border-color var(--t-mid) var(--ease-soft),
+              background var(--t-mid) var(--ease-soft),
+              box-shadow var(--t-mid) var(--ease-soft);
+}
+
+.input:focus {
+  border-color: var(--primary);
+  background: #1f2937;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+}
+
+/* ================= Light Mode ================= */
+
+html.light body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+html.light .card-bg,
+html.light .timeline-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
